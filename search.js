@@ -21,7 +21,8 @@ function fromDir(startPath,word,extension){
             fromDir(filename,word,extension); //recurse
         }
         else if (filename.indexOf(extension)>=0) {
-            if(file.indexOf(word) > -1)
+            var data = fs.readFileSync(filename , 'utf8');
+            if(data.indexOf(word) > -1)
             {
                 flag++;
                 console.log('-- found: ',filename); 
@@ -32,7 +33,7 @@ function fromDir(startPath,word,extension){
 
 /*
 try {  
-    var data = fs.readFileSync('my-file.txt', 'utf8');
+   
     console.log(data);    
 } catch(e) {
     console.log('Error:', e.stack);
@@ -49,6 +50,3 @@ else{
          console.log('no file was found');
     }
 }
-
-
-
